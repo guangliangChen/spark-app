@@ -1,5 +1,7 @@
 namespace java com.cgl.thrift
 
+include "SharedStruct.thrift"
+
 enum Operation {
     ADD = 1,
     SUBTRACT = 2,
