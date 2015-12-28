@@ -8,6 +8,8 @@ object NetWorkWordCount {
     val conf = new SparkConf().setMaster("local[2]").setAppName("NetworkWordCount")
     val ssc = new StreamingContext(conf, Seconds(3))
 
+//    ssc.checkpoint(checkpointDirectory)
+//    StreamingContext.getOrCreate(checkpintDiretory, functionToCreateContext _)
     val lines = ssc.socketTextStream("node1", 9999, StorageLevel.MEMORY_AND_DISK_SER)
 
     val words = lines.flatMap(_.split(" "))
